@@ -23,6 +23,13 @@ npx tsc --noEmit
 - Exits with code 0
 - No type errors reported
 
+### 4. Test suite runs without errors
+```
+npm test
+```
+- Vitest starts and exits with code 0
+- No test failures (no tests yet is acceptable for this phase)
+
 ## Out of scope for validation
 - `next build` passing (that's a nice-to-have; dev server is the gate for this phase)
 - Visual design or content quality

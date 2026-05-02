@@ -10,6 +10,7 @@ Set up a working Next.js + TypeScript project that forms the foundation for all 
 - Replace the existing `src/index.ts` stub — it is no longer needed
 - A single placeholder home route (`/`) to confirm the app is alive
 - A main layout composed of three subcomponents — Header, Main, and Footer — each in its own file under `app/components/`
+- Vitest installed and wired up via `npm test`
 
 ### Out of scope
 - ESLint, Prettier, or any other code quality tooling
@@ -25,6 +26,7 @@ Set up a working Next.js + TypeScript project that forms the foundation for all 
 | Stub | Delete | Clean break — the new project structure replaces it entirely |
 | Styling | None yet | Phase 10 handles styling; bootstrap stays minimal |
 | Component files | One component per file | Keeps each piece independently readable and testable; matches Next.js/React conventions |
+| Test runner | Vitest | Native TypeScript support, fast watch mode, zero-config for node-environment unit tests |
 
 ## Context
 

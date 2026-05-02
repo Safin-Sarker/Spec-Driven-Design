@@ -18,6 +18,15 @@ TypeScript — used end-to-end on the server side for type safety and a consiste
 
 **SQLite** — lightweight, file-based relational database. No separate server process required, making it ideal for development and simple deployments.
 
+## Testing
+
+**Vitest** — used for spec validation and unit tests. Chosen because:
+
+- Native TypeScript support with no extra configuration
+- Compatible with the Vite/Next.js ecosystem
+- Fast watch mode suitable for test-driven spec validation
+- Run with `npm test`
+
 ## Rendering Strategy
 
 Server-side rendering (SSR) and static generation where appropriate, with client components for interactive dashboard elements.

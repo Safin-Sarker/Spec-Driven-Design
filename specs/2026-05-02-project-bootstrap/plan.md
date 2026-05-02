@@ -24,11 +24,16 @@
 2. Create `app/page.tsx` with a placeholder home page
 3. Add `next-env.d.ts` reference if not auto-generated
 
-## Task Group 6 — Verify
+## Task Group 6 — Install and configure Vitest
+1. Install `vitest` as a dev dependency
+2. Add `"test": "vitest"` script to `package.json`
+3. Add `vitest.config.ts` with `environment: 'node'`
+
+## Task Group 7 — Verify
 1. Run `npm run dev` and confirm the server starts on port 3000
 2. Open the browser and confirm the home page renders without errors
 
-## Task Group 7 — Main layout component
+## Task Group 8 — Main layout component
 1. Create `app/components/Header.tsx` — site header subcomponent
 2. Create `app/components/Footer.tsx` — site footer subcomponent
 3. Create `app/components/MainLayout.tsx` — wraps Header, `<main>` (children), Footer; imports the CSS file
