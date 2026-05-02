@@ -1,0 +1,17 @@
+.site-header {
+  padding: 1rem 2rem;
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.site-main {
+  min-height: calc(100vh - 8rem);
+  padding: 2rem;
+}
+
+.site-footer {
+  padding: 1rem 2rem;
+  background: #1a1a2e;
+  color: #fff;
+  text-align: center;
+}
