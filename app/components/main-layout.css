@@ -1,17 +1,45 @@
+/* Mobile-first base styles */
+
 .site-header {
-  padding: 1rem 2rem;
+  padding: 0.75rem 1rem;
   background: #1a1a2e;
   color: #fff;
 }
 
 .site-main {
   min-height: calc(100vh - 8rem);
-  padding: 2rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .site-footer {
-  padding: 1rem 2rem;
+  padding: 0.75rem 1rem;
   background: #1a1a2e;
   color: #fff;
   text-align: center;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .site-header {
+    padding: 1rem 2rem;
+  }
+
+  .site-main {
+    padding: 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .site-footer {
+    padding: 1rem 2rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .site-main {
+    max-width: 1200px;
+  }
 }

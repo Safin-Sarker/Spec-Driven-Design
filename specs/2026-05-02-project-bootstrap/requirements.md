@@ -24,7 +24,7 @@ Set up a working Next.js + TypeScript project that forms the foundation for all 
 |---|---|---|
 | Router | App Router | Current Next.js default; required for future server components |
 | Stub | Delete | Clean break — the new project structure replaces it entirely |
-| Styling | None yet | Phase 10 handles styling; bootstrap stays minimal |
+| Styling | Minimal, mobile-first | Phase 10 handles full visual design; the layout CSS introduced here must already follow responsive design principles (mobile-first, fluid widths) so it doesn't need to be rewritten later |
 | Component files | One component per file | Keeps each piece independently readable and testable; matches Next.js/React conventions |
 | Test runner | Vitest | Native TypeScript support, fast watch mode, zero-config for node-environment unit tests |
 

@@ -27,6 +27,14 @@ TypeScript — used end-to-end on the server side for type safety and a consiste
 - Fast watch mode suitable for test-driven spec validation
 - Run with `npm test`
 
+## Responsive Design
+
+All UI must be mobile-first and work correctly across desktop, tablet, and mobile viewports. Approach:
+
+- Mobile-first CSS: base styles target small screens; media queries add layout for larger breakpoints
+- Standard breakpoints: `768px` (tablet), `1024px` (desktop)
+- No fixed pixel widths on page-level containers — use `max-width` with fluid padding instead
+
 ## Rendering Strategy
 
 Server-side rendering (SSR) and static generation where appropriate, with client components for interactive dashboard elements.

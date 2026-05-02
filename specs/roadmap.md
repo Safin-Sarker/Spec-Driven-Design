@@ -30,4 +30,4 @@ Build a staff-facing dashboard showing upcoming appointments and patient (agent)
 Build an agent-facing dashboard showing their appointments, therapies, and wellness history.
 
 ## Phase 10 — Styling & Polish
-Apply a consistent visual design that is attractive and works well in modern browsers.
+Apply a consistent, responsive visual design that is attractive and works well across desktop, tablet, and mobile screen sizes.

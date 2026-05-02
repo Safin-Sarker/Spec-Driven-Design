@@ -10,3 +10,4 @@ We provide a safe, caring space for agents to describe their ailments, explore t
 - Match ailments to appropriate therapies
 - Enable agents and staff to manage care through appointments
 - Present a calm, welcoming experience that reflects genuine concern for agent health
+- Deliver a fully responsive UI that works well on any screen size — desktop, tablet, and mobile
