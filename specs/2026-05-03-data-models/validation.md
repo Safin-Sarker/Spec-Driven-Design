@@ -8,7 +8,7 @@ Phase 2 is complete and ready to merge when all of the following pass:
 ```ts
 import { Agent, Ailment, Therapy, StaffMember, Appointment, AppointmentStatus } from '@/types';
 ```
-- This import resolves without errors in any file under `src/`
+- This import resolves without errors in any file in the project
 
 ### 2. TypeScript compiles without errors
 ```
@@ -26,12 +26,12 @@ npm test
 
 ### 4. Schema matches requirements
 Manually verify each type against `requirements.md`:
-- `Agent` has `id`, `name`, `email`, `dateOfBirth`, `ailmentIds`, `therapyIds`
+- `Agent` has `id`, `firstName`, `lastName`, `email`, `phone`, `dateOfBirth`
 - `Ailment` has `id`, `name`, `description`
 - `Therapy` has `id`, `name`, `description`, `ailmentIds`, `durationMinutes`
-- `StaffMember` has `id`, `name`, `email`, `therapyIds`
-- `Appointment` has `id`, `agentId`, `staffMemberId`, `therapyId`, `scheduledAt`, `status`
-- `AppointmentStatus` is `'pending' | 'confirmed' | 'completed' | 'cancelled'`
+- `StaffMember` has `id`, `name`, `email`, `role`, `therapyIds`
+- `Appointment` has `id`, `agentId`, `staffMemberId`, `therapyId`, `scheduledAt`, `durationMinutes`, `status`
+- `AppointmentStatus` is `'pending' | 'confirmed' | 'completed' | 'cancelled' | 'no-show'`
 
 ## Out of scope for validation
 - Runtime type checking

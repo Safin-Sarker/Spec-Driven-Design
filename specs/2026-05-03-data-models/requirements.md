@@ -6,9 +6,9 @@ Define TypeScript types and interfaces for every core domain entity. These types
 
 ### In scope
 - Five domain types as TypeScript interfaces: `Agent`, `Ailment`, `Therapy`, `Appointment`, `StaffMember`
-- A single barrel export file (`src/types/index.ts`) so consumers import from one place
+- A single barrel export file (`types/index.ts`) so consumers import from one place
 - ID-based cross-references between types (e.g. `agentId: string`, not embedded objects)
-- An `AppointmentStatus` union type (`'pending' | 'confirmed' | 'completed' | 'cancelled'`)
+- An `AppointmentStatus` union type (`'pending' | 'confirmed' | 'completed' | 'cancelled' | 'no-show'`)
 
 ### Out of scope
 - Zod or any other runtime validation (Phase 3+)
@@ -22,20 +22,25 @@ Define TypeScript types and interfaces for every core domain entity. These types
 |---|---|---|
 | Pure TS interfaces | Yes | Phase 2 is types only; runtime validation added later when the DB is wired up |
 | Cross-references | By ID (`string`) | Keeps types flat and serialization-safe; avoids circular reference issues |
-| Location | `src/types/` | Standard Next.js convention; clearly separated from components and lib code |
+| Location | `types/` (project root) | No `src/` directory in this project; `@/*` alias maps to project root |
 | Date fields | `string` (ISO 8601) | JSON-safe; avoids `Date` object serialisation pitfalls across server/client boundary |
-| Barrel export | `src/types/index.ts` | Single import path — changing internal file layout won't break consumers |
+| Barrel export | `types/index.ts` | Single import path — changing internal file layout won't break consumers |
+| `Agent.name` | Split into `firstName`/`lastName` | Profile pages, sorting, and salutations all need them separately |
+| `ailmentIds`/`therapyIds` on `Agent` | Removed | Derived from appointments; storing them on the agent creates a redundant, denormalized list that diverges from appointment history |
+| `Appointment.durationMinutes` | Added | The booked duration must be stored on the appointment — `Therapy.durationMinutes` is a template default that can change |
+| `StaffMember.role` | Added | Dashboard needs to distinguish practitioner types (e.g. physiotherapist vs. receptionist) |
+| `AppointmentStatus` | Includes `'no-show'` | Distinct from `'cancelled'` for billing and rebooking purposes |
 
-## Proposed schema
+## Schema
 
 ```ts
 interface Agent {
   id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
+  phone: string;
   dateOfBirth: string;       // ISO 8601
-  ailmentIds: string[];
-  therapyIds: string[];
 }
 
 interface Ailment {
@@ -49,17 +54,18 @@ interface Therapy {
   name: string;
   description: string;
   ailmentIds: string[];      // ailments this therapy addresses
-  durationMinutes: number;
+  durationMinutes: number;   // default duration; may be overridden per appointment
 }
 
 interface StaffMember {
   id: string;
   name: string;
   email: string;
+  role: string;              // e.g. 'physiotherapist', 'receptionist'
   therapyIds: string[];      // therapies this staff member can deliver
 }
 
-type AppointmentStatus = 'pending' | 'confirmed' | 'completed' | 'cancelled';
+type AppointmentStatus = 'pending' | 'confirmed' | 'completed' | 'cancelled' | 'no-show';
 
 interface Appointment {
   id: string;
@@ -67,12 +73,13 @@ interface Appointment {
   staffMemberId: string;
   therapyId: string;
   scheduledAt: string;       // ISO 8601
+  durationMinutes: number;   // captured at booking time
   status: AppointmentStatus;
 }
 ```
 
 ## Context
 
-All five types are required for Phase 3 (database migrations) and Phase 4 (seed data). Getting the shape right here prevents breaking changes across those phases. The schema above is intentionally minimal — fields can be extended later without breaking existing consumers because TypeScript structural typing is additive.
+All five types are required for Phase 3 (database migrations) and Phase 4 (seed data). Getting the shape right here prevents breaking changes across those phases.
 
 Refer to `specs/mission.md` for product context and `specs/tech-stack.md` for stack rationale.

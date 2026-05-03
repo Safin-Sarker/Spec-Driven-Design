@@ -1,8 +1,8 @@
 export interface Agent {
   id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
+  phone: string;
   dateOfBirth: string;
-  ailmentIds: string[];
-  therapyIds: string[];
 }
