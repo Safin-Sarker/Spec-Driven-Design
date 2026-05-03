@@ -23,3 +23,5 @@ Thumbs.db
 
 # SQLite database
 agentclinic.db
+agentclinic.db-shm
+agentclinic.db-wal

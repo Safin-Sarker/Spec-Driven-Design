@@ -3,7 +3,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 
 const DB_PATH = path.join(process.cwd(), 'agentclinic.db');
-const SCHEMA_PATH = path.join(process.cwd(), 'db', 'schema.sql');
+const SCHEMA_PATH = path.join(__dirname, 'schema.sql');
 
 const db = new Database(DB_PATH);
 db.pragma('journal_mode = WAL');
