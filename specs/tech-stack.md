@@ -38,3 +38,16 @@ All UI must be mobile-first and work correctly across desktop, tablet, and mobil
 ## Rendering Strategy
 
 Server-side rendering (SSR) and static generation where appropriate, with client components for interactive dashboard elements.
+
+## Known gaps
+
+These are not yet in the stack and are planned for upcoming phases:
+
+### Authentication
+No auth layer exists. Staff and agents currently access dashboards without any login. Planned additions:
+- Session-based or token-based auth (e.g. NextAuth.js / Auth.js)
+- Role distinction: `agent` vs `staff`
+- Protected routes per role
+
+### UI component library
+Styling is currently done with CSS Modules and global CSS. No shared component library or design system is defined. A component library or design token system will reduce visual inconsistency and speed up future feature work.
